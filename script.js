@@ -559,6 +559,7 @@ const playIcon = document.getElementById('play-icon');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
+const shuffleBtn = document.getElementById('shuffle-btn'); // Tarik elemen shuffle
 const lyricsToggleBtn = document.getElementById('lyrics-toggle-btn');
 const progressWrapper = document.getElementById('progress-wrapper');
 const progressFill = document.getElementById('progress-fill');
@@ -569,7 +570,21 @@ const volumeSlider = document.getElementById('volume-slider');
 let currentSongIndex = 0;
 let isPlaying = false;
 let isLyricsVisible = false;
+let isShuffle = false; // Status awal shuffle mati
 
+// SISTEM TOGGLE SHUFFLE
+shuffleBtn.addEventListener('click', () => {
+    isShuffle = !isShuffle; // Balikkan status nyala/mati
+    
+    if (isShuffle) {
+        // Efek nyala warna hijau khas Spotify
+        shuffleBtn.style.filter = "brightness(1.5) drop-shadow(0 0 5px #1DB954)";
+    } else {
+        shuffleBtn.style.filter = "none";
+    }
+});
+
+// SISTEM TOGGLE LIRIK
 lyricsToggleBtn.addEventListener('click', () => {
     isLyricsVisible = !isLyricsVisible; 
     
@@ -577,7 +592,7 @@ lyricsToggleBtn.addEventListener('click', () => {
         gridContainer.style.display = 'none';
         lyricsContainer.style.display = 'block';
         mainTitle.innerText = "Lirik Lagu";
-        lyricsToggleBtn.style.filter = "brightness(1.5) drop-shadow(0 0 5px #4CC9F0)";
+        lyricsToggleBtn.style.filter = "brightness(1.5) drop-shadow(0 0 5px #1DB954)"; // Udah jadi hijau
     } else {
         gridContainer.style.display = 'grid';
         lyricsContainer.style.display = 'none';
@@ -647,10 +662,21 @@ function selectAndPlaySong(index) {
     playSong();
 }
 
+
 function nextSong() {
-    let nextIndex = currentSongIndex + 1;
-    if (nextIndex >= playlist.length) nextIndex = 0;
-    selectAndPlaySong(nextIndex);
+    if (isShuffle) {
+
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * playlist.length);
+        } while (randomIndex === currentSongIndex && playlist.length > 1); 
+        selectAndPlaySong(randomIndex);
+    } else {
+
+        let nextIndex = currentSongIndex + 1;
+        if (nextIndex >= playlist.length) nextIndex = 0;
+        selectAndPlaySong(nextIndex);
+    }
 }
 
 function prevSong() {
@@ -690,7 +716,7 @@ playBtnContainer.addEventListener('click', togglePlayPause);
 nextBtn.addEventListener('click', nextSong);
 prevBtn.addEventListener('click', prevSong);
 audio.addEventListener('timeupdate', updateProgressBar);
-audio.addEventListener('ended', nextSong);
+audio.addEventListener('ended', nextSong); // Panggil fungsi nextSong yang udah di-upgrade
 progressWrapper.addEventListener('click', setProgress);
 volumeSlider.addEventListener('input', (e) => { audio.volume = e.target.value; });
 
