@@ -7,8 +7,7 @@
 }
 
 body {
-    background-color: #0A0F1D;
-    background-image: radial-gradient(circle at top right, #1F2D5A, #0A0F1D);
+    background-color: #0B2418; 
     height: 100vh;
     display: flex;
     color: #FFFFFF;
@@ -28,7 +27,7 @@ body {
 
 .sidebar {
     grid-area: sidebar;
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
@@ -41,7 +40,7 @@ body {
 .brand h2 {
     font-size: 1.3rem;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: #ffffff; /* Warna hijau Spotify */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -58,7 +57,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    color: #B3B8C8;
+    color: #A3B1AA;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
@@ -106,8 +105,8 @@ body {
 }
 
 .album-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 16px;
     cursor: pointer;
@@ -115,7 +114,7 @@ body {
 }
 
 .album-card:hover {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
@@ -140,7 +139,7 @@ body {
 
 .album-card p {
     font-size: 0.8rem;
-    color: #8A92A6;
+    color: #A3B1AA;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -148,10 +147,10 @@ body {
 
 .bottom-player {
     grid-area: player;
-    background: rgba(10, 15, 29, 0.6);
+    background: rgba(5, 15, 10, 0.6); /* Sedikit disesuaikan biar hijau gelap */
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -190,7 +189,7 @@ body {
 
 .song-details p {
     font-size: 0.8rem;
-    color: #A0A5B5;
+    color: #A3B1AA;
 }
 
 .player-controls {
@@ -235,7 +234,7 @@ body {
 
 .play-pause-container:hover {
     transform: scale(1.05);
-    background: #4CC9F0;
+    background: #1DB954; /* Hover hijau terang */
 }
 
 .progress-container {
@@ -247,7 +246,7 @@ body {
 
 .time-stamp {
     font-size: 0.75rem;
-    color: #8A92A6;
+    color: #A3B1AA;
     width: 35px;
 }
 
@@ -268,7 +267,7 @@ body {
 .progress-fill {
     height: 100%;
     width: 0%;
-    background: #4CC9F0;
+    background: #1DB954; /* Bar hijau terang */
     border-radius: 2px;
     position: relative;
 }
@@ -309,5 +308,5 @@ body {
 }
 
 .volume-slider::-webkit-slider-thumb:hover {
-    background: #4CC9F0;
+    background: #1DB954; /* Tombol volume hijau */
 }
